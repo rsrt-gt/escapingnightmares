@@ -20,7 +20,6 @@ const commands = [
   { label: "grab", value: "Grab onto something" },
   { label: "climb", value: "Climb onto something" },
   { label: "block entrance", value: "Blocks Entrance from any monsters" },
-  { label: "go back", value: "Go to previous stage" },
   { label: "rest", value: "Rest Up or possibly Teleport ahead of the dream" },
   { label: "hello", value: "Hello!" },
   { label: "hint", value: "gets a hint" },

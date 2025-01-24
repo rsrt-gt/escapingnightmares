@@ -78,17 +78,26 @@ export default function promptActions(
     console.log("You look ahead in detail...");
     setPrompt(performScan("forward", level) + "");
   } else if (prompt.label.includes("Pill overdose")) {
-    if (level.level === levels.length) {
+    if (
+      level.level === levels.length &&
+      items.filter((e) => e.label == "Pills").length > 1
+    ) {
       console.log("You take the pills and wake up...");
       setPrompt(
         "You woke up, and its all over... In the sun, the horizon. The sunset, the view. No harm in sight. It was all, just a dream? Or am I in another sequence"
       );
     } else {
-      setPrompt("Woah, seems like I can't manage to overdose.");
+      setPrompt(
+        "Woah, seems like I can't manage to overdose. I need at least 4 Pills"
+      );
       console.log("This action is only available on the last level.");
     }
   } else if (prompt.label.includes("PIN")) {
-    setPinDialog(true);
+    if (level.level == 8) {
+      setPrompt("Try overdosing, that'll do");
+    } else {
+      setPinDialog(true);
+    }
   } else if (prompt.label.includes("Inventory")) {
     console.log("Checking your inventory...");
     showInventory(setInvOpen);
